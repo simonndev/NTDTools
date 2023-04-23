@@ -38,6 +38,7 @@ namespace NtdTools.Desktop
         {
             moduleCatalog.AddModule<Modules.NavigationPane.NavigationPaneModule>();
             moduleCatalog.AddModule<Modules.Customer.CustomerModule>(InitializationMode.WhenAvailable, dependsOn: nameof(Modules.NavigationPane.NavigationPaneModule));
+            moduleCatalog.AddModule<Modules.TrainingSolutions.TrainingSolutionsModule>(InitializationMode.WhenAvailable, dependsOn: nameof(Modules.NavigationPane.NavigationPaneModule));
         }
     }
 }

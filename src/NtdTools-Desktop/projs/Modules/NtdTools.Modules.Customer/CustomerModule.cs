@@ -12,11 +12,13 @@ namespace NtdTools.Modules.Customer
         {
             var rm = containerProvider.Resolve<IRegionManager>();
             rm.RegisterViewWithRegion<Views.CustomerNavigationMenuItemView>(RegionNames.DynamicNavigationRegion);
+            rm.RegisterViewWithRegion<Views.CustomersNavigationMenuItemView>(RegionNames.DynamicNavigationRegion);
         }
 
         public override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+            containerRegistry.RegisterForNavigation<Views.CustomerView>();
+            containerRegistry.RegisterForNavigation<Views.CustomersView>();
         }
     }
 }
