@@ -6,6 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:presentation="clr-namespace:NtdTools.Presentation;assembly=NtdTools.Presentation"
+             xmlns:root="clr-namespace:NtdTools.Modules.NavigationPane"
              xmlns:local="clr-namespace:NtdTools.Modules.NavigationPane.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -43,7 +44,8 @@
 
         <ScrollViewer Grid.Row="1"
                       VerticalScrollBarVisibility="Auto">
-            <ListBox prism:RegionManager.RegionName="{x:Static presentation:RegionNames.DynamicNavigationRegion}"
+            <ListBox x:Name="NavigationPane"
+                     prism:RegionManager.RegionName="{x:Static presentation:RegionNames.DynamicNavigationRegion}"
                      Style="{StaticResource ListBoxGroupByModuleNameStyle}"
                      ItemTemplate="{DynamicResource NavigationMenuItemContentSwitchingTemplate}"
                      ItemContainerStyle="{DynamicResource ListBoxItemSelectionAwareStyle}">

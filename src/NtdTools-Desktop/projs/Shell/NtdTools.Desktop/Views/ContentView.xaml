@@ -14,10 +14,7 @@
             <ColumnDefinition MinWidth="200" Width="Auto" />
             <ColumnDefinition Width="6" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-
-        <TextBlock Grid.Column="3" Text="This is the content view" />
 
         <ContentControl prism:RegionManager.RegionName="{x:Static presentation:RegionNames.LeftContentRegion}" />
 

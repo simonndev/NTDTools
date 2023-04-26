@@ -1,5 +1,7 @@
 ﻿using NtdTools.Desktop.Models;
+using NtdTools.Modules.NavigationPane;
 using NtdTools.Presentation;
+using NtdTools.Presentation.Events;
 using NtdTools.Presentation.Modularity;
 using Prism.Commands;
 using Prism.Events;
@@ -18,14 +20,15 @@ namespace NtdTools.Desktop.ViewModels
     public class MainViewModel : INavigationAware
     {
         private readonly IRegionManager _regionManager;
-        
+        private readonly IEventAggregator _eventAggregator;
         //private readonly IModuleTracker _moduleTracker;
 
         
 
-        public MainViewModel(IRegionManager regionManager)
+        public MainViewModel(IRegionManager regionManager, IEventAggregator eventAggregator)
         {
             _regionManager = regionManager;
+            _eventAggregator = eventAggregator;
 
             LoadedModules = new ObservableCollection<ModuleModel>();
         }
@@ -49,11 +52,20 @@ namespace NtdTools.Desktop.ViewModels
         {
             if (moduleInfo != null)
             {
+                string moduleName = (moduleInfo as ModuleModel).Name;
                 var parameters = new NavigationParameters
                 {
                     { "FirstLoad", false },
-                    { "Module", (moduleInfo as ModuleModel).Name }
+                    { "Module", moduleName }
                 };
+
+                //NavigationPaneUtility.SetModuleNameFilter = moduleName;
+
+                var payload = new NavigationMenuItemSelectedEventPayload
+                {
+                    ModuleName = moduleName
+                };
+                _eventAggregator.GetEvent<NavigationMenuItemSelectedEvent>().Publish(payload);
 
                 _regionManager.RequestNavigate(RegionNames.MainRegion, nameof(Views.ContentView), parameters);
             }

@@ -18,18 +18,17 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Command="{
-                            Binding Path=DataContext.OpenModuleCommand
-                            , RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                                CommandParameter="{Binding}">
-                            <StackPanel>
-                                <TextBlock>
-                                    <Run Text="{Binding Path=DisplayName}" />
-                                    <LineBreak />
-                                    <Run Text="{Binding Path=Name}" />
-                                </TextBlock>
-                            </StackPanel>
-                        </Button>
+                        <Grid MinHeight="100" MinWidth="240">
+                            <Button Command="{
+                                Binding Path=DataContext.OpenModuleCommand,
+                                RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                    CommandParameter="{Binding}">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Path=DisplayName}" Style="{StaticResource BodyStrongTextBlockStyle}" />
+                                    <TextBlock Text="{Binding Path=Name}" Style="{StaticResource BodyTextBlockStyle}" />
+                                </StackPanel>
+                            </Button>
+                        </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
