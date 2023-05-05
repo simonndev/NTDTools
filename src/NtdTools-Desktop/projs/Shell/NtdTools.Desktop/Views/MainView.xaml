@@ -9,16 +9,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1200">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        
-        <TextBlock Text="This is the main view" />
-
-        <Button Command="{Binding Path=OpenModuleCommand}" CommandParameter="Module X" />
-
         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
             <ItemsControl ItemsSource="{Binding Path=LoadedModules}">
                 <ItemsControl.ItemsPanel>
@@ -26,6 +16,21 @@
                         <UniformGrid Columns="4" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid MinHeight="100" MinWidth="240">
+                            <Button Command="{
+                                Binding Path=DataContext.OpenModuleCommand,
+                                RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                    CommandParameter="{Binding}">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Path=DisplayName}" Style="{StaticResource BodyStrongTextBlockStyle}" />
+                                    <TextBlock Text="{Binding Path=Name}" Style="{StaticResource BodyTextBlockStyle}" />
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
     </Grid>

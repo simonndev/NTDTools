@@ -1,4 +1,6 @@
-﻿using Prism.Ioc;
+﻿using NtdTools.Presentation.Navigation;
+using Prism.Ioc;
+using Prism.Modularity;
 using Prism.Regions;
 using Prism.Unity;
 using System;
@@ -24,6 +26,8 @@ namespace NtdTools.Desktop
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterInstance(new ModuleNavigationTracker());
+
             containerRegistry.RegisterForNavigation<Views.MainView>();
             containerRegistry.RegisterForNavigation<Views.ContentView>();
         }
@@ -31,6 +35,15 @@ namespace NtdTools.Desktop
         protected override void InitializeShell(Window shell)
         {
             base.InitializeShell(shell);
+        }
+
+        protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+        {
+            moduleCatalog.AddModule<Modules.NavigationPane.NavigationPaneModule>();
+
+            moduleCatalog.AddModule<Modules.NtdAdmin.NtdAdminModule>(InitializationMode.WhenAvailable, dependsOn: nameof(Modules.NavigationPane.NavigationPaneModule));
+            //moduleCatalog.AddModule<Modules.Customer.CustomerModule>(InitializationMode.WhenAvailable, dependsOn: nameof(Modules.NavigationPane.NavigationPaneModule));
+            moduleCatalog.AddModule<Modules.TrainingSolutions.TrainingSolutionsModule>(InitializationMode.WhenAvailable, dependsOn: nameof(Modules.NavigationPane.NavigationPaneModule));
         }
     }
 }

@@ -13,6 +13,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Infrastructure\NtdTools.Presentation\NtdTools.Presentation.csproj" />
+    <ProjectReference Include="..\..\Modules\NtdTools.Modules.NavigationPane\NtdTools.Modules.NavigationPane.csproj" />
+    <ProjectReference Include="..\..\Modules\NtdTools.Modules.NtdAdmin\NtdTools.Modules.NtdAdmin.csproj" />
+    <ProjectReference Include="..\..\Modules\NtdTools.Modules.TrainingSolutions\NtdTools.Modules.TrainingSolutions.csproj" />
+    <ProjectReference Include="..\..\Modules\NtdTools.Modules.WorkshopSolutions\NtdTools.Modules.WorkshopSolutions.csproj" />
   </ItemGroup>
 
 </Project>

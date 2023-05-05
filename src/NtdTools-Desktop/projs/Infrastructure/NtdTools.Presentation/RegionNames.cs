@@ -7,5 +7,6 @@ namespace NtdTools.Presentation
         public static readonly string MainRegion = nameof(MainRegion);
         public static readonly string LeftContentRegion = nameof(LeftContentRegion);
         public static readonly string MainContentRegion = nameof(MainContentRegion);
+        public static readonly string DynamicNavigationRegion = nameof(DynamicNavigationRegion);
     }
 }
