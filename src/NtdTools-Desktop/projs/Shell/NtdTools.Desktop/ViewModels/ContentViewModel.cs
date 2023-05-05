@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Windows;
 
 namespace NtdTools.Desktop.ViewModels
 {
@@ -18,9 +20,7 @@ namespace NtdTools.Desktop.ViewModels
         public ContentViewModel(IEventAggregator eventAggregator, IRegionManager regionManager)
         {
             _regionManager = regionManager;
-            eventAggregator.GetEvent<NavigationMenuItemSelectedEvent>().Subscribe(NavigateBackHome);
-
-
+            eventAggregator.GetEvent<NavigateBackHomeEvent>().Subscribe(NavigateBackHome);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -36,12 +36,12 @@ namespace NtdTools.Desktop.ViewModels
         {
         }
 
-        private void NavigateBackHome(NavigationMenuItemSelectedEventPayload from)
+        private void NavigateBackHome(string fromModuleName)
         {
             var parameters = new NavigationParameters
             {
                 { "FirstLoad", false },
-                { "Module", from.ModuleName }
+                { "Module", fromModuleName }
             };
 
             _regionManager.RequestNavigate(RegionNames.MainRegion, nameof(Views.MainView), parameters);

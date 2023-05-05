@@ -28,8 +28,6 @@ namespace NtdTools.Desktop.ViewModels
             
         }
 
-        
-
         public void OnViewLoaded()
         {
             List<IModuleInfo> modules = new List<IModuleInfo>();
@@ -47,6 +45,8 @@ namespace NtdTools.Desktop.ViewModels
                 { "Modules", modules }
             };
 
+            // HACK: navigate to the ContentView to load the Navigation items first)
+            _regionManager.RequestNavigate(RegionNames.MainRegion, nameof(Views.ContentView));
             _regionManager.RequestNavigate(RegionNames.MainRegion, nameof(Views.MainView), parameters);
         }
 

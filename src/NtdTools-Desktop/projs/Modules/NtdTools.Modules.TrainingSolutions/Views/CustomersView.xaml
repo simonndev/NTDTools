@@ -6,7 +6,39 @@
              xmlns:local="clr-namespace:NtdTools.Modules.TrainingSolutions.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="Customers"
+                              Source="{Binding Path=CustomerCollection}" />
+    </UserControl.Resources>
+    <DockPanel LastChildFill="True">
+
         <TextBlock Text="This is Training Solutions - Customers content view." />
-    </Grid>
+        
+        <ListBox ItemsSource="{Binding Source={StaticResource Customers}}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock>
+                            <Run Text="{Binding Path=CompanyName}" />
+                            <LineBreak />
+                            <Run Text="{Binding Path=Address}" />
+                            <Run Text="{Binding Path=City}" />
+                            <Run Text="{Binding Path=PostalCode}" />
+                        </TextBlock>
+
+                        <TextBlock Grid.Column="1">
+                            <Run Text="{Binding Path=Country}" />
+                            <LineBreak />
+                            <Run Text="{Binding Path=Region}" />
+                        </TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
 </UserControl>

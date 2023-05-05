@@ -2,7 +2,6 @@ using NtdTools.Presentation;
 using NtdTools.Presentation.Modularity;
 using Prism.Ioc;
 using Prism.Regions;
-using System;
 
 namespace NtdTools.Modules.TrainingSolutions
 {
@@ -19,8 +18,11 @@ namespace NtdTools.Modules.TrainingSolutions
 
         public override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            //containerRegistry.RegisterScoped<NtdDbContext>();
+            //containerRegistry.RegisterScoped<CustomerService>();
+
             containerRegistry.RegisterForNavigation<Views.WholesalersView>();
-            containerRegistry.RegisterForNavigation<Views.CustomersView>();
+            containerRegistry.RegisterForNavigation<Views.CustomersView>(typeof(Views.CustomersView).FullName);
             containerRegistry.RegisterForNavigation<Views.TrainingCatalogView>();
             containerRegistry.RegisterForNavigation<Views.ScheduledEventsView>();
         }
