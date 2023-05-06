@@ -6,7 +6,7 @@ using System;
 
 namespace NtdTools.Modules.NtdAdmin
 {
-    public class NtdAdminModule : NtdModuleBase
+    public class NtdAdminModule : NtdModuleBase, INtdUIContentModule
     {
         public override void OnInitialized(IContainerProvider containerProvider)
         {

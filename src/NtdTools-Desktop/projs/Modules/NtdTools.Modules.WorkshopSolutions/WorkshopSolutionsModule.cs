@@ -4,7 +4,7 @@ using System;
 
 namespace NtdTools.Modules.WorkshopSolutions
 {
-    public class WorkshopSolutionsModule : NtdModuleBase
+    public class WorkshopSolutionsModule : NtdModuleBase, INtdUIContentModule
     {
         public override void OnInitialized(IContainerProvider containerProvider)
         {

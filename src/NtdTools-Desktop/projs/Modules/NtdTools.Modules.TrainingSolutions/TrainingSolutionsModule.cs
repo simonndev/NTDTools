@@ -5,7 +5,7 @@ using Prism.Regions;
 
 namespace NtdTools.Modules.TrainingSolutions
 {
-    public class TrainingSolutionsModule : NtdModuleBase
+    public class TrainingSolutionsModule : NtdModuleBase, INtdUIContentModule
     {
         public override void OnInitialized(IContainerProvider containerProvider)
         {
