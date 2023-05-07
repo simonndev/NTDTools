@@ -4,8 +4,35 @@ using System.Text;
 
 namespace NtdEntities.Master
 {
-    public class Customer : NtdEntityBase<Guid>
+    public class Customer : Customer<Guid>
     {
+        public Customer()
+        {
+            Id = Guid.NewGuid();
+        }
+
+        public Customer(string companyName, string country)
+            : this()
+        {
+            CompanyName = companyName;
+            Country = country;
+        }
+    }
+
+    public class Customer<TKey> : NtdEntityBase<TKey>
+        where TKey : IEquatable<TKey>
+    {
+        public Customer()
+        {
+        }
+
+        public Customer(string companyName, string country)
+            : this()
+        {
+            CompanyName = companyName;
+            Country = country;
+        }
+
         public string CompanyName { get; set; }
 
         public string Address { get; set; }
